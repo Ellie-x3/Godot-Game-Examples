@@ -1,0 +1,263 @@
+[gd_scene format=3 uid="uid://d2ouya6hb1dmg"]
+
+[ext_resource type="Script" uid="uid://cnh0oiq1w2eds" path="res://Scenes/Game/game.gd" id="1_ciybh"]
+[ext_resource type="Texture2D" uid="uid://d2l4p15q3186c" path="res://Assets/grid.png" id="1_mv0hc"]
+[ext_resource type="FontFile" uid="uid://binrwx8vlmdjl" path="res://Assets/GROBOLD.ttf" id="2_qikps"]
+[ext_resource type="Script" uid="uid://dqsgmb3j52yqx" path="res://Scenes/Game/current_turn.gd" id="4_flgk0"]
+
+[sub_resource type="Theme" id="Theme_cwv2h"]
+Label/colors/font_color = Color(0.98039216, 0.6862745, 0.23921569, 1)
+Label/constants/outline_size = 65
+Label/font_sizes/font_size = 128
+Label/fonts/font = ExtResource("2_qikps")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ciybh"]
+font = ExtResource("2_qikps")
+font_size = 96
+font_color = Color(0.98039216, 0.6862745, 0.23921569, 1)
+outline_size = 65
+outline_color = Color(0, 0, 0, 1)
+stacked_outline_count = 1
+stacked_outline_0/size = 13
+stacked_outline_0/color = Color(0.98039216, 0.6862745, 0.23921569, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_i1e5p"]
+font = ExtResource("2_qikps")
+font_size = 96
+font_color = Color(0.98039216, 0.6862745, 0.23921569, 1)
+outline_size = 65
+outline_color = Color(0, 0, 0, 1)
+stacked_outline_count = 1
+stacked_outline_0/size = 13
+stacked_outline_0/color = Color(0.98039216, 0.6862745, 0.23921569, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_flgk0"]
+font = ExtResource("2_qikps")
+font_size = 30
+outline_size = 24
+outline_color = Color(0, 0, 0, 1)
+stacked_outline_count = 1
+stacked_outline_0/size = 13
+stacked_outline_0/color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ciybh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xfil1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_flgk0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vifcx"]
+
+[node name="Game" type="Node2D" unique_id=574893220]
+script = ExtResource("1_ciybh")
+
+[node name="Interface" type="CanvasLayer" parent="." unique_id=1385698735]
+
+[node name="UIRoot" type="Control" parent="Interface" unique_id=1885218910]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Interface/UIRoot" unique_id=1323737018]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Interface/UIRoot/MarginContainer" unique_id=1679629704]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Interface/UIRoot/MarginContainer/VBoxContainer" unique_id=1184199742]
+layout_mode = 2
+theme_override_constants/margin_left = 37
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 37
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Interface/UIRoot/MarginContainer/VBoxContainer/MarginContainer" unique_id=526082584]
+layout_mode = 2
+
+[node name="TurnLabel" type="Label" parent="Interface/UIRoot/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=1960988116]
+layout_mode = 2
+theme = SubResource("Theme_cwv2h")
+text = "Turn:"
+label_settings = SubResource("LabelSettings_ciybh")
+
+[node name="MarginContainer" type="MarginContainer" parent="Interface/UIRoot/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=1052639865]
+layout_mode = 2
+theme_override_constants/margin_left = 36
+
+[node name="CurrentTurn" type="Label" parent="Interface/UIRoot/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer" unique_id=1584118581]
+layout_mode = 2
+theme = SubResource("Theme_cwv2h")
+text = "You"
+label_settings = SubResource("LabelSettings_i1e5p")
+script = ExtResource("4_flgk0")
+
+[node name="Scores" type="GridContainer" parent="Interface/UIRoot/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=1042538987]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+theme_override_constants/h_separation = 40
+theme_override_constants/v_separation = 22
+columns = 3
+
+[node name="Label" type="Label" parent="Interface/UIRoot/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Scores" unique_id=716483712]
+layout_mode = 2
+text = "Player 1"
+label_settings = SubResource("LabelSettings_flgk0")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Interface/UIRoot/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Scores" unique_id=1677284426]
+layout_mode = 2
+text = "Ties"
+label_settings = SubResource("LabelSettings_flgk0")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Interface/UIRoot/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Scores" unique_id=1883771879]
+layout_mode = 2
+text = "Player 2"
+label_settings = SubResource("LabelSettings_flgk0")
+horizontal_alignment = 1
+
+[node name="Player1Score" type="Label" parent="Interface/UIRoot/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Scores" unique_id=1340416507]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_flgk0")
+horizontal_alignment = 1
+
+[node name="Ties" type="Label" parent="Interface/UIRoot/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Scores" unique_id=362341279]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_flgk0")
+horizontal_alignment = 1
+
+[node name="Player2Score" type="Label" parent="Interface/UIRoot/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Scores" unique_id=1913881239]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_flgk0")
+horizontal_alignment = 1
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Interface/UIRoot/MarginContainer/VBoxContainer" unique_id=1884817495]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BoardRoot" type="Control" parent="Interface/UIRoot/MarginContainer/VBoxContainer/AspectRatioContainer" unique_id=1892509614]
+layout_mode = 2
+
+[node name="Lines" type="TextureRect" parent="Interface/UIRoot/MarginContainer/VBoxContainer/AspectRatioContainer/BoardRoot" unique_id=1563182968]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_mv0hc")
+
+[node name="Cells" type="GridContainer" parent="Interface/UIRoot/MarginContainer/VBoxContainer/AspectRatioContainer/BoardRoot" unique_id=824241137]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.124
+anchor_top = 0.033
+anchor_right = 0.876
+anchor_bottom = 0.92
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 37
+columns = 3
+
+[node name="Button1" type="Button" parent="Interface/UIRoot/MarginContainer/VBoxContainer/AspectRatioContainer/BoardRoot/Cells" unique_id=1248251322]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ciybh")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xfil1")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_flgk0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vifcx")
+
+[node name="Button2" type="Button" parent="Interface/UIRoot/MarginContainer/VBoxContainer/AspectRatioContainer/BoardRoot/Cells" unique_id=164488846]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ciybh")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xfil1")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_flgk0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vifcx")
+
+[node name="Button3" type="Button" parent="Interface/UIRoot/MarginContainer/VBoxContainer/AspectRatioContainer/BoardRoot/Cells" unique_id=1552250711]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ciybh")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xfil1")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_flgk0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vifcx")
+
+[node name="Button4" type="Button" parent="Interface/UIRoot/MarginContainer/VBoxContainer/AspectRatioContainer/BoardRoot/Cells" unique_id=1034484828]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ciybh")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xfil1")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_flgk0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vifcx")
+
+[node name="Button5" type="Button" parent="Interface/UIRoot/MarginContainer/VBoxContainer/AspectRatioContainer/BoardRoot/Cells" unique_id=792823408]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ciybh")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xfil1")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_flgk0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vifcx")
+
+[node name="Button6" type="Button" parent="Interface/UIRoot/MarginContainer/VBoxContainer/AspectRatioContainer/BoardRoot/Cells" unique_id=1424486141]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ciybh")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xfil1")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_flgk0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vifcx")
+
+[node name="Button7" type="Button" parent="Interface/UIRoot/MarginContainer/VBoxContainer/AspectRatioContainer/BoardRoot/Cells" unique_id=830536259]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ciybh")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xfil1")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_flgk0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vifcx")
+
+[node name="Button8" type="Button" parent="Interface/UIRoot/MarginContainer/VBoxContainer/AspectRatioContainer/BoardRoot/Cells" unique_id=42644425]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ciybh")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xfil1")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_flgk0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vifcx")
+
+[node name="Button9" type="Button" parent="Interface/UIRoot/MarginContainer/VBoxContainer/AspectRatioContainer/BoardRoot/Cells" unique_id=1943898188]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ciybh")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xfil1")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_flgk0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vifcx")
+
+[connection signal="turn_changed" from="." to="Interface/UIRoot/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer/CurrentTurn" method="_on_game_turn_changed"]

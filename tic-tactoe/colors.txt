@@ -1,0 +1,4 @@
+20C2F0 - Background
+FAAF3D - Labels
+fa403d - X
+00d55b - O
