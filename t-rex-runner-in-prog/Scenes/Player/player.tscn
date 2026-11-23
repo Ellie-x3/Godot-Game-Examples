@@ -1,8 +1,34 @@
 [gd_scene format=3 uid="uid://c4k3udj2o6nra"]
 
+[ext_resource type="Script" uid="uid://dj75uxaaffu7t" path="res://Scenes/Player/player.gd" id="1_a3d8c"]
 [ext_resource type="Texture2D" uid="uid://bp7ermns3y4q5" path="res://Assets/DinoSprites - vita.png" id="1_uvnfx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cwv2h"]
+size = Vector2(7, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oikmp"]
+atlas = ExtResource("1_uvnfx")
+region = Rect2(432, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06tpx"]
+atlas = ExtResource("1_uvnfx")
+region = Rect2(456, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7g0yx"]
+atlas = ExtResource("1_uvnfx")
+region = Rect2(480, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dey5f"]
+atlas = ExtResource("1_uvnfx")
+region = Rect2(504, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5xpd"]
+atlas = ExtResource("1_uvnfx")
+region = Rect2(528, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ks1b7"]
+atlas = ExtResource("1_uvnfx")
+region = Rect2(552, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a3d8c"]
 atlas = ExtResource("1_uvnfx")
@@ -48,6 +74,29 @@ region = Rect2(216, 0, 24, 24)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_oikmp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06tpx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7g0yx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dey5f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5xpd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ks1b7")
+}],
+"loop": 1,
+"name": &"Duck",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_a3d8c")
 }, {
 "duration": 1.0,
@@ -59,9 +108,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_htcer")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"Hurt",
-"speed": 8.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -88,11 +137,23 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D" unique_id=795036112]
+collision_mask = 2
+script = ExtResource("1_a3d8c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1953628886]
+position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_cwv2h")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=207687902]
 sprite_frames = SubResource("SpriteFrames_cwv2h")
-animation = &"Run"
-frame_progress = 0.51322377
+animation = &"Hurt"
+autoplay = "Run"
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=1081949288]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=418603154]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_cwv2h")
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

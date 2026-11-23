@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://cm1hpt5q3em2l"]
+
+[ext_resource type="FontFile" uid="uid://cpthuv3nf31pf" path="res://Assets/Pocky Block.ttf" id="1_p18n6"]
+
+[resource]
+font = ExtResource("1_p18n6")
+font_color = Color(0.8875971, 0.36912107, 0.2453937, 1)
+stacked_outline_count = 1
+stacked_outline_0/size = 3
